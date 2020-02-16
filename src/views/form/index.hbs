@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style media="screen">
+    .card {
+      padding-bottom: 3vh;
+    }
+
+    .foto {
+      max-width: 25vw;
+      padding-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      cursor: pointer;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('select').formSelect();
+      $('.modal').modal();
+      $('.datepicker').datepicker();
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row card">
+      <div class="col s12 center">
+        <h1>Pilih salah satu foto</h1>
+      </div>
+      <div class="col s12 card-content center">
+        <!-- show photos -->
+        {{#each foto}}
+          <div class="col s6">
+            <img src="foto/{{this}}" name="{{this}}" onclick="generateNama(this);" data-target="modal" class="foto modal-trigger" />
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- show form section -->
+    <form action="/ganti" method="post">
+      <!-- Modal Structure -->
+      <div id="modal" class="modal modal-fixed-footer">
+        <div class="modal-content row">
+          <div class="col s12" style="text-align: center;">
+            <h5 id="namaFileSekarang"></h5>
+          </div>
+          <div class="col s12" style="text-align: center;">
+            <img src="#" height="auto" width="50%" class="modal-trigger" id="fotoSiswa" />
+          </div>
+          <input type="text" name="namaFile" id="namaFile" value="" hidden />
+          <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input type="text" name="namaSiswa" placeholder="Nama Siswa" />
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">date_range</i>
+            <input type="text" name="tempatLahir" placeholder="Tempat Lahir" />
+          </div>
+          <div class="input-field col s2">
+            <input type="number" name="tanggalLahir" placeholder="Tanggal Lahir" />
+          </div>
+          <div class="input-field col s2">
+            <input type="text" name="bulanLahir" placeholder="Bulan Lahir" />
+          </div>
+          <div class="input-field col s2">
+            <input type="number" name="tahunLahir" placeholder="Tahun Lahir" />
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">house</i>
+            <textarea class="materialize-textarea" name="alamatSiswa" placeholder="Alamat"></textarea>
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">phone</i>
+            <input type="number" name="nomorHPSiswa" placeholder="No. HP/WA" />
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">format_quote</i>
+            <textarea class="materialize-textarea" name="lainLain" placeholder="Info lain... (quotes, IG, FB, dll.)"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-close waves-effect waves-green btn-flat">tutup</a>
+          <input type="submit" class="submit-btn waves-effect waves-green btn-flat" value="ubah" />
+        </div>
+      </div>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript">
+      let namaFileSekarang;
+
+      function generateNama(a) {
+        namaFileSekarang = a.name;
+        $("#namaFile").attr("value", namaFileSekarang);
+        $("#namaFileSekarang").html(namaFileSekarang);
+        $("#fotoSiswa").attr("src", `foto/${namaFileSekarang}`);
+        return;
+      }
+    </script>
+</body>
+
+</html>
+
+<!-- <input type="text" name="namaFile" readonly value="{{this}}">
+<input type="text" name="namaSiswa" /> -->

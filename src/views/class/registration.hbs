@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style media="screen">
+    .card {
+      padding-bottom: 3vh;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row card">
+      <div class="col s12 card-content">
+        <form action="/classRegister" method="post">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">group</i>
+            <input type="text" name="kelas" placeholder="Kelas" />
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">people_outline</i>
+            <input type="text" name="jumlah" placeholder="Jumlah Siswa" />
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input type="password" name="password" placeholder="Password" />
+          </div>
+      </div>
+      <div class="card-action">
+        <input type="submit" value="sign up" class="waves-light btn col s4 offset-s4" />
+      </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

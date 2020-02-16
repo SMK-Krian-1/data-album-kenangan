@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style media="screen">
+    .card {
+      padding-bottom: 3vh;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('select').formSelect();
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row card">
+      <div class="col s12 card-content">
+        <form action="/login" method="post">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">account_box</i>
+            <input id="username" type="text" name="username" placeholder="Username" />
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input id="password" type="password" name="password" placeholder="Password" />
+          </div>
+      </div>
+      <div class="card-action">
+        <input type="submit" value="login" class="waves-light btn col s4 offset-s4" />
+      </div>
+      <div class="input-field col s12">
+        <select name="kelas">
+          <option value="0" disabled selected>Pilih Kelas</option>
+          {{#each kelas}}
+            <option value="{{ this }}">{{ this }}</option>
+          {{/each}}
+        </select>
+        <label>Kelas</label>
+      </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
