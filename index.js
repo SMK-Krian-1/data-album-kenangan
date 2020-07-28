@@ -10,11 +10,12 @@ const app = express();
 app.set("views", path.join(__dirname, "src/views"));
 app.set("view engine", "hbs");
 app.use("/foto", express.static("foto"));
+app.use("/data", express.static("data"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
-  res.json("404");
+  res.render("kartu-pelajar/index");
 });
 
 app.get("/form", (req, res) => {
@@ -52,4 +53,4 @@ app.post("/ganti", (req, res) => {
   res.redirect("/form");
 });
 
-app.listen(3000, "172.16.4.59", () => console.log("172.16.4.59:3000"));
+app.listen(3000, "192.168.0.105", () => console.log("192.168.0.105:3000"));
